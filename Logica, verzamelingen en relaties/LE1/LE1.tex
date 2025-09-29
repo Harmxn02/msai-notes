@@ -1,0 +1,218 @@
+\documentclass[a4paper, 12pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[margin=2.5cm]{geometry}
+
+\usepackage{charter}
+
+% Document information
+\title{Logic, Sets and Relations \textemdash{} LE 1}
+\author{Harman Preet Singh}
+
+% Custom theorem environments
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+
+\begin{document}
+% chktex-file 44
+
+\maketitle
+\tableofcontents
+
+\section{Wat is propositielogica}
+Een propositie is een uitspraak die ofwel waar of onwaar is.\\
+Bijvoorbeeld, \textit{`Het regent vandaag'} is een propositie omdat het ofwel waar of onwaar is.
+
+\begin{itemize}
+	\item vragen zijn geen proposities
+	\item bevelen (opdrachten) zijn geen proposities
+\end{itemize}
+
+
+
+
+
+\section{De taal van de propositielogica}
+
+\begin{itemize}
+	\item negatie\-teken: $\neg p$ \hfill niet $p$
+	\item conjunctie\-teken: $p \land q$ \hfill $p$ en $q$
+	\item disjunctie\-teken: $p \lor q$ \hfill $p$ of $q$
+	\item implicatie\-teken: $p \rightarrow q$ \hfill Als $p$, dan $q$
+	\item equivalentie\-teken: $p \leftrightarrow q$ \hfill (dan en slechts dan als $\rightarrow$ \textit{desda})
+	\begin{itemize}
+		\item \textit{bv.} de uitspraak `$x^2$' is even desda $x$ is even
+	\end{itemize}
+\end{itemize}
+
+
+
+
+\subsection{Formules en bereik}
+De formules van de propositielogica worden als volgt gedefinieerd.
+
+\begin{itemize}
+	\item Elke propositieletter $(p, q, r, \ldots)$ is een formule
+	\item Als $\phi$ een formule is, dan is $\neg \phi$ ook een formule
+	\item Als $\phi$ en $\psi$ formules zijn, dan zijn $(\phi \land \psi)$, $(\phi \lor \psi)$, $(\phi \rightarrow \psi)$ en $(\phi \leftrightarrow \psi)$ ook formules
+	\item Er zijn geen andere formules
+\end{itemize}
+
+\vspace{1cm}
+\noindent\textbf{Voorbeeld}: bij \indent $\neg p \rightarrow (p \land q)$ \indent zijn de formules:
+
+\begin{itemize}
+	\item $p$ \hfill eerste wet
+	\item $q$ \hfill eerste wet
+	\item $\neg p$ \hfill tweede wet
+	\item $p \land q$ \hfill derde wet
+	\item $\neg p \rightarrow (p \land q)$ \hfill derde wet
+\end{itemize}
+
+
+
+
+\section{Waarheidstabellen}
+\subsection{Negatie}
+
+Gewoon het omgekeerde.
+
+\[
+\begin{tabular}{|c|c|}
+	\hline	
+	$p$ & $\neg$ $p$ \\
+	\hline
+	0 & 1\\
+	1 & 0\\
+	\hline
+\end{tabular}
+\]
+
+
+
+\subsection{Conjunctie}
+
+Enkel als beide proposities waar (1) zijn, is de conjunctie waar (1).
+
+\[
+\begin{tabular}{|c|c|c|}
+	\hline
+	$\phi$ & $\psi$ & $\phi\land\psi$ \\
+	\hline
+	1 & 1 & 1 \\
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 0 \\
+	\hline
+\end{tabular}
+\]
+
+
+\subsection{Disjunctie}
+
+Als tenminste een van beide proposities waar (1) zijn, is de disjunctie waar (1).
+
+\[
+\begin{tabular}{|c|c|c|}
+	\hline
+	$\phi$ & $\psi$ & $\phi\lor\psi$ \\
+	\hline
+	1 & 1 & 1 \\
+	1 & 0 & 1 \\
+	0 & 1 & 1 \\
+	0 & 0 & 0 \\
+	\hline
+\end{tabular}
+\]
+
+\subsection{Implicatie}
+
+Deze misschien gewoon uit het hoofd leren.
+
+\[
+\begin{tabular}{|c|c|c|}
+	\hline
+	$\phi$ & $\psi$ & $\phi\rightarrow\psi$ \\
+	\hline
+	1 & 1 & 1 \\
+	1 & 0 & 0 \\
+	0 & 1 & 1 \\
+	0 & 0 & 1 \\
+	\hline
+\end{tabular}
+\]
+
+\subsection{Equivalentie}
+
+Als beide hetzelfde zijn, is de equivalentie waar (1).
+
+\[
+\begin{tabular}{|c|c|c|}
+	\hline
+	$\phi$ & $\psi$ & $\phi\leftrightarrow\psi$ \\
+	\hline
+	1 & 1 & 1 \\
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+	\hline
+\end{tabular}
+\]
+
+
+
+
+\section{De kracht van de propositielogica}
+\subsection{Andere connectieven}
+
+De connectieven die we tot nu toe hebben gezien zijn niet de enige die we kunnen gebruiken. We kunnen ook andere connectieven definiëren in termen van de connectieven die we al hebben gezien.
+
+\begin{center}
+	\noindent\textbf{NAND} \\
+	als ze niet beide 1 zijn, is het resultaat 1
+\end{center}
+\[
+\begin{tabular}{|c|c|c|}
+	\hline
+	$\phi$ & $\psi$ & $\phi\hspace{0.2cm} \text{nand} \hspace{0.2cm} \psi$ \\
+	\hline
+	1 & 1 & 0 \\
+	1 & 0 & 1 \\
+	0 & 1 & 1 \\
+	0 & 0 & 1 \\
+	\hline
+\end{tabular}
+\]
+
+\begin{center}
+	\noindent\textbf{NOR} \\
+	als ze beide 0 zijn, is het resultaat 1
+\end{center}
+\[
+\begin{tabular}{|c|c|c|}
+	\hline
+	$\phi$ & $\psi$ & $\phi\hspace{0.2cm} \text{nor} \hspace{0.2cm} \psi$ \\
+	\hline
+	1 & 1 & 0 \\
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 1 \\
+	\hline
+\end{tabular}
+\]
+
+
+
+\subsection{Vertalen in propositielogica}
+
+-
+
+\end{document}
